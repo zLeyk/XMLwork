@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.example.demo.mapper.CityMapper">
+    <!--like '%'||#{GLQ}||'%'-->
+        <select id="getAllCity"  resultType="com.example.demo.Bean.City">
+            select id,pid,name from city
+        </select>
+    <insert id="addCity" parameterType="com.example.demo.Bean.City">
+        insert into city values (#{id}, #{pid},#{name})
+    </insert>
+    <select id="getCityByid"  parameterType="java.lang.String" resultType="com.example.demo.Bean.City">
+        select id,pid,name from city where id = #{id}
+    </select>
+    <select id="getAllCityByname"  parameterType="java.lang.String" resultType="com.example.demo.Bean.City">
+        select id,pid,name from city where name like CONCAT(CONCAT('%', #{name}), '%')
+    </select>
+
+
+
+    </mapper>

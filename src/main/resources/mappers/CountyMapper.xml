@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CountyMapper">
+    <insert id="addCounty" parameterType="com.example.demo.Bean.County">
+        insert into county values (#{id}, #{pid},#{name})
+    </insert>
+    <select id="getAllCounty"  resultType="com.example.demo.Bean.County">
+        select id,pid,name from county
+    </select>
+    <select id="getCountyByid"  parameterType="java.lang.String" resultType="com.example.demo.Bean.County">
+        select id,pid,name from county where id = #{id}
+    </select>
+    <select id="getAllCountyByname"  parameterType="java.lang.String" resultType="com.example.demo.Bean.County">
+        select id,pid,name from county where name like CONCAT(CONCAT('%', #{name}), '%')
+    </select>
+
+</mapper>
